@@ -11,6 +11,7 @@ function SignUp() {
   const [error, setError] = useState("");
 
   const navigate = useNavigate();
+  const BASE_URL = import.meta.env.VITE_BASE_URL;
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -24,7 +25,7 @@ function SignUp() {
     e.preventDefault();
     try {
       const res = await axios.post(
-        "http://localhost:3000/api/user/register",
+        `${BASE_URL}/api/user/register`,
         formData,
         {
           headers: {
