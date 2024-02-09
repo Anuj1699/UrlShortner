@@ -121,7 +121,7 @@ const Dashboard = () => {
                   </td>
                   <td className="whitespace-nowrap px-6 py-4">
                     <a
-                      href={`http://localhost:3000/api/url/${item.shortId}`}
+                      href={`${process.env.meta.BASE_URL}/api/url/${item.shortId}`}
                       target="_blank"
                       className=" text-blue-900 font-semibold text-lg"
                     >
