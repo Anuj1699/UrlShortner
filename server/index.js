@@ -5,7 +5,6 @@ import dotenv from "dotenv"
 import cors from "cors";
 import cookieParser from "cookie-parser";
 import { mongoose } from 'mongoose';
-import path from "path";
 
 dotenv.config({ path: "../.env" });
 
@@ -16,18 +15,10 @@ app.use(express.json());
 
 mongoose.connect(process.env.MONGO)
     .then(() => console.log("Connected"))
-    .catch((error) => console.log(error));
-
-const __dirname = path.resolve();    
-
+    .catch((error) => console.log(error));  
+  
 app.use('/api/user', userRoute)
 app.use('/api/url', urlRoute);
-
-app.use(express.static(path.join(__dirname, '/client/dist')))
-
-app.get('*', (req,res) => {
-    res.sendFile(path.join(__dirname, 'client', 'dist', 'index.html'));
-})
 
 app.use((err, req, res, next) => {
     const statuscode = err.statuscode || 500;
